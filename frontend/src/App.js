@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import HomeScreen from './screens/homeScreen/homeScreen';
 
 function App() {
+
   return (
-    <div className="App">
-      <h1>E-Shop</h1>
-    </div>
+      <HomeScreen />
   );
 }
 
