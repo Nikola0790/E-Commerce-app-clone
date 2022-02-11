@@ -1,0 +1,79 @@
+@import "./variables";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    // header
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 20px;
+        margin-bottom: 50px;
+        background-color: #232f3e;
+        color: #ffffff;
+        button:first-child {
+            margin-right: 20px;
+        }
+        button {
+            border: none;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        button:hover {
+            color: $starColor;
+        }
+    }
+
+    // footer
+
+    footer {
+        margin-top: 50px;
+        padding: 15px 0;
+        background-color: #232f3e;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    // home screen
+    .container-home {
+        width: 70%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        .card-container {
+            width: 100%;
+            border: 1px solid $cardFrameColor;
+            .product-img {
+                width: 100%;
+            }
+            .product-img img {
+                width: 100%;
+            }
+            .product-data {
+                margin-left: 15px;
+                p {
+                    span {
+                        color: $starColor;
+                        margin: 10px 0 20px 0;
+                    }
+                }
+                .product-price{
+                    font-size: $priceFontSize;
+                }
+                .product-name {
+                    font-size: $productNameFontSize;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
