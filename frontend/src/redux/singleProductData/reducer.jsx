@@ -1,32 +1,32 @@
 import {
-  PRODUCTS_DATA_REQUEST,
-  PRODUCTS_DATA_SUCCESS,
-  PRODUCTS_DATA_FAIL,
+  SINGLE_PRODUCT_REQUEST,
+  SINGLE_PRODUCT_FAIL,
+  SINGLE_PRODUCT_SUCCESS,
 } from "./types";
 
 const initialState = {
   loading: true,
-  data: [],
+  data: {},
   error: "",
 };
 
-const reducerProducts = (state = initialState, action) => {
+const reducerSingleProduct = (state = initialState, action) => {
   switch (action.type) {
-    case PRODUCTS_DATA_REQUEST:
+    case SINGLE_PRODUCT_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case PRODUCTS_DATA_SUCCESS:
+    case SINGLE_PRODUCT_SUCCESS:
       return {
         loading: false,
         data: action.payload,
         error: "",
       };
-    case PRODUCTS_DATA_FAIL:
+    case SINGLE_PRODUCT_FAIL:
       return {
         loading: false,
-        data: [],
+        data: {},
         error: action.payload,
       };
     default:
@@ -34,4 +34,4 @@ const reducerProducts = (state = initialState, action) => {
   }
 };
 
-export default reducerProducts;
+export default reducerSingleProduct;
