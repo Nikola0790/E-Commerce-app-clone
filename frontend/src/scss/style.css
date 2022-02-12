@@ -38,16 +38,18 @@ body header button:hover {
 }
 
 body footer {
-  margin-top: 50px;
   padding: 15px 0;
   background-color: #232f3e;
   color: #ffffff;
   text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 body .container-home {
   width: 70%;
-  margin: 0 auto;
+  margin: 0 auto 100px auto;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -84,5 +86,90 @@ body .container-home .card-container .product-data .product-price {
 body .container-home .card-container .product-data .product-name {
   font-size: 20px;
   font-weight: bold;
+}
+
+body .container-product-screen {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  margin: 0 50px 100px 50px;
+}
+
+body .container-product-screen .product-picture img {
+  width: 100%;
+}
+
+body .container-product-screen .product-details div {
+  width: 60%;
+  margin: 0 auto;
+}
+
+body .container-product-screen .product-details div .product-stars-rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 15px 0;
+}
+
+body .container-product-screen .product-details div .product-stars-rating span {
+  color: #ffd700;
+}
+
+body .container-product-screen .product-details div .product-screen-price {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+body .container-product-screen .product-details div .product-screen-price span {
+  font-weight: normal;
+}
+
+body .container-product-screen .product-details div .product-description {
+  line-height: 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+body .container-product-screen .product-details div .product-description span {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+body .container-product-screen .cart-field .cart-card {
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+}
+
+body .container-product-screen .cart-field .cart-card div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .container-product-screen .cart-field .cart-card div select {
+  padding: 5px;
+}
+
+body .container-product-screen .cart-field .cart-card button {
+  width: 90%;
+  padding: 10px 0;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
