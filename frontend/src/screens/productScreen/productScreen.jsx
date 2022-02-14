@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { actionsGetSingleProduct } from "../../redux/singleProductData/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -8,6 +8,7 @@ const ProductScreen = () => {
   const dispatch = useDispatch();
   const productData = useSelector((state) => state.singleProduct);
   const { loading, data, error } = productData;
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     dispatch(actionsGetSingleProduct(id));
@@ -130,6 +131,18 @@ const ProductScreen = () => {
     }
   }
 
+  const stocks = (num) => {
+    let opt = [];
+    for (let i = 1; i <= num; i++) {
+      opt[opt.length] = (
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
+    }
+    return opt;
+  };
+
   return (
     <>
       {loading ? (
@@ -145,9 +158,12 @@ const ProductScreen = () => {
             <div>
               <h2>{data.data.name}</h2>
               <p className="product-stars-rating">
-                <span>{stars}</span>{data.data.numReviews} Reviews
+                <span>{stars}</span>
+                {data.data.numReviews} Reviews
               </p>
-              <p className="product-screen-price">Price: <span>{data.data.price} $</span> </p>
+              <p className="product-screen-price">
+                Price: <span>{data.data.price} $</span>{" "}
+              </p>
               <p className="product-description">
                 Description: <br />
                 <span>{data.data.description}</span>
@@ -156,19 +172,38 @@ const ProductScreen = () => {
           </div>
           <div className="cart-field">
             <div className="cart-card">
-              <div>
+              <div className="brand-name">
                 <p>{data.data.brand}</p>
               </div>
               <div>
-                <p>Price</p><span>{data.data.price} $</span>
+                <p>Price</p>
+                <span>{data.data.price} $</span>
               </div>
-              <div>
-                <p>Status</p>
-              </div>
-              <div>
-                <p>Qty</p><select name="" id=""><option value=""></option></select>
-              </div>
-              <button>Add to Cart</button>
+              {data.data.inStock > 0 ? (
+                <>
+                  <div>
+                    <p>Status</p>
+                    <span className="success">In Stock</span>
+                  </div>
+                  <div>
+                    <p>Qty</p>
+                    <select
+                      name=""
+                      id=""
+                      value={qty}
+                      onChange={(e) => setQty(e.target.value)}
+                    >
+                      {stocks(data.data.inStock)}
+                    </select>
+                  </div>
+                  <button>Add to Cart</button>
+                </>
+              ) : (
+                <div>
+                  <p>Status</p>
+                  <span className="alert">Not In Stock</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
