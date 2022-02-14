@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { actionsGetSingleProduct } from "../../redux/singleProductData/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import Rating from "../../components/ratingStars/rating";
 
 const ProductScreen = () => {
   const { id } = useParams();
@@ -15,121 +16,6 @@ const ProductScreen = () => {
   }, [dispatch]);
 
   console.log(data);
-
-  let stars;
-  if (!loading) {
-    if (data.data.rating < 0.5) {
-      stars = (
-        <>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 0.5 && data.data.rating < 1) {
-      stars = (
-        <>
-          <span className="material-icons-round">star_half</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 1 && data.data.rating < 1.5) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 1.5 && data.data.rating < 2) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star_half</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 2 && data.data.rating < 2.5) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 2.5 && data.data.rating < 3) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star_half</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 3 && data.data.rating < 3.5) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star_border</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 3.5 && data.data.rating < 4) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star_half</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 4 && data.data.rating < 4.5) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star_border</span>
-        </>
-      );
-    } else if (data.data.rating >= 4.5 && data.data.rating < 5) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star_half</span>
-        </>
-      );
-    } else if (data.data.rating === 5) {
-      stars = (
-        <>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-          <span className="material-icons-round">star</span>
-        </>
-      );
-    }
-  }
 
   const stocks = (num) => {
     let opt = [];
@@ -158,7 +44,9 @@ const ProductScreen = () => {
             <div>
               <h2>{data.data.name}</h2>
               <p className="product-stars-rating">
-                <span>{stars}</span>
+                <span>
+                  <Rating rating={data.data.rating} />
+                </span>
                 {data.data.numReviews} Reviews
               </p>
               <p className="product-screen-price">
