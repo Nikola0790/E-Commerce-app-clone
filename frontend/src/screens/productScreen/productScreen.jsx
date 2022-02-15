@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { actionsGetSingleProduct } from "../../redux/singleProductData/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Rating from "../../components/ratingStars/rating";
 
 const ProductScreen = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const productData = useSelector((state) => state.singleProduct);
   const { loading, data, error } = productData;
   const [qty, setQty] = useState(1);
@@ -27,6 +28,10 @@ const ProductScreen = () => {
       );
     }
     return opt;
+  };
+
+  const addToCart = () => {
+    navigate(`/cart/${data.data._id}?qty=${qty}`);
   };
 
   return (
@@ -84,13 +89,18 @@ const ProductScreen = () => {
                       {stocks(data.data.inStock)}
                     </select>
                   </div>
-                  <button>Add to Cart</button>
+                  <button onClick={addToCart}>Add to Cart</button>
                 </>
               ) : (
-                <div>
-                  <p>Status</p>
-                  <span className="alert">Not In Stock</span>
-                </div>
+                <>
+                  <div>
+                    <p>Status</p>
+                    <span className="alert">Not In Stock</span>
+                  </div>
+                  <button className="disabled" disabled>
+                    Add to Cart
+                  </button>
+                </>
               )}
             </div>
           </div>
