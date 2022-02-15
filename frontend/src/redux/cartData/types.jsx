@@ -1,0 +1,3 @@
+export const CART_DATA_REQUEST = "CART_DATA_REQUEST";
+export const ADD_CART_DATA = "ADD_CART_DATA";
+export const REMOVE_CART_DATA = "REMOVE_CART_DATA";
