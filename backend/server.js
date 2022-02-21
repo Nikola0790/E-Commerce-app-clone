@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import data from "./data.js"
+import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js";
 
 const app = express();
@@ -20,22 +20,8 @@ app.all('/api/products/:id', (req, res, next) => {
     next(); 
 })
 
-// for single product
-app.get('/api/products/:id', (req, res) => {
-    const dataP = data.products.find(product => product._id == req.params.id);
-    if(dataP) {
-        res.send(dataP);
-    } else {
-        res.status(404).send({message: 'Not found product'})
-    }
-})
-
-// for all productss
-app.get('/api/products', (req, res) => {
-    res.send(data.products);
-})
-
 app.use('/api/users', userRouter);
+app.use('/api/products', productRouter);
 
 app.get('/', (req, res) => {
     res.send("Server is ready");
