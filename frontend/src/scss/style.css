@@ -5,6 +5,18 @@
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+body #root {
+  min-height: 100%;
+}
+
 body header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -21,19 +33,20 @@ body header {
   color: #ffffff;
 }
 
-body header button:first-child {
+body header a:first-child {
   margin-right: 20px;
 }
 
-body header button {
+body header a {
   border: none;
   font-size: 20px;
   background-color: transparent;
   color: #ffffff;
   cursor: pointer;
+  text-decoration: none;
 }
 
-body header button:hover {
+body header a:hover {
   color: #ffd700;
 }
 
@@ -256,5 +269,47 @@ body .container-cart-screen .total-field button {
   cursor: pointer;
   display: block;
   margin: 0 auto;
+}
+
+body .signInScreen .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+}
+
+body .signInScreen .form div:first-child {
+  margin: 0 0 20px 0;
+}
+
+body .signInScreen .form div {
+  margin-top: 25px;
+}
+
+body .signInScreen .form div label {
+  font-size: 20px;
+}
+
+body .signInScreen .form div input {
+  font-size: large;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+body .signInScreen .form div button {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  font-size: large;
+  background-color: #ffd700;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
