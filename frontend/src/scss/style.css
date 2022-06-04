@@ -50,6 +50,35 @@ body header a:hover {
   color: #ffd700;
 }
 
+body header .header-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+body header .dropdown {
+  display: none;
+  position: absolute;
+  padding: 15px 5px;
+  margin: 0;
+  width: 94px;
+  background-color: #232f3e;
+}
+
+body header .dropdown li a {
+  width: 100%;
+  margin: 0;
+}
+
+body header .header-menu__options:hover .dropdown {
+  display: block;
+}
+
+body header .header-menu__options:hover .dropdown li {
+  list-style-type: none;
+}
+
 body footer {
   padding: 15px 0;
   background-color: #232f3e;

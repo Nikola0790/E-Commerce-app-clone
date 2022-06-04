@@ -36,6 +36,32 @@ body {
     a:hover {
       color: $starColor;
     }
+    .header-menu {
+      display: flex;
+      position: relative;
+    }
+   .dropdown {
+     display: none;
+     position: absolute;
+     padding: 15px 5px;
+     margin: 0;
+     width: 94px;
+     background-color: #232f3e;
+      li {
+        a {
+          width: 100%;
+          margin: 0;
+        }
+      }
+   }
+   .header-menu__options:hover {
+     .dropdown {
+       display: block;
+       li {
+         list-style-type: none;
+       }
+     }
+   }
   }
 
   // footer
