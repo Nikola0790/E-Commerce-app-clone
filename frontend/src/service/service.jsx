@@ -11,3 +11,8 @@ export const getSingleProduct = async (id) => {
    const data = await axios.get(`${url}/api/products/${id}`);
    return data;
 } 
+
+export const signInUser = async (email, password) => {
+   const data = await axios.post(`${url}/api/users/signin`, {email, password});
+   return data;
+}
