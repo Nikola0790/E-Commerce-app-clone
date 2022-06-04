@@ -26,6 +26,12 @@ app.all('/api/products/:id', (req, res, next) => {
     next(); 
 })
 
+app.all(`/api/users/signin`, (req, res, next) => {
+    res.header("Access-Control-Allow-Origin",  'http://localhost:3000');
+    res.header("Access-Control-Allow-Headers", "*");
+    next();
+})
+
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 
