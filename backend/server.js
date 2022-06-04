@@ -1,9 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js";
 
+dotenv.config();
+
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 const port = process.env.PORT || 5000;
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/ecommerce');
 
@@ -18,6 +24,12 @@ app.all('/api/products', (req, res, next) => {
 app.all('/api/products/:id', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", 'http://localhost:3000'); // allow request from localhost:3000;
     next(); 
+})
+
+app.all(`/api/users/signin`, (req, res, next) => {
+    res.header("Access-Control-Allow-Origin",  'http://localhost:3000');
+    res.header("Access-Control-Allow-Headers", "*");
+    next();
 })
 
 app.use('/api/users', userRouter);
