@@ -1,15 +1,30 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { actionSignInUser } from '../../redux/user/actions';
 
 
 const SignInScreen = () => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userData = useSelector((state) => state.userSignIn);
+    const {userInfo} = userData;
     const[email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const submitHandler = (e) => {
         e.preventDefault();
+        dispatch(actionSignInUser(email, password));
     }
+
+    useEffect(() => {
+        if (userInfo !== null) {
+            navigate("/home");
+        } else {
+            navigate("/signin");
+        }
+    }, [userInfo]);
 
     return (
         <div className='signInScreen'>
