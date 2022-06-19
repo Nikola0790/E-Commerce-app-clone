@@ -13,6 +13,21 @@ body {
   #root {
     min-height: 100%;
   }
+
+  // error 
+  .danger {
+    background-color: $dangerColor;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    height: 40px;
+    font-size: larger;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
   // header
   header {
     display: flex;
@@ -185,7 +200,7 @@ body {
             color: green;
           }
           .alert {
-            color: red;
+            color: $dangerColor;
           }
         }
         button {
