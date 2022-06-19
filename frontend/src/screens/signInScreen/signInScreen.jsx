@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { actionSignInUser } from '../../redux/user/actions';
-
+import Error from '../../components/error/error';
 
 const SignInScreen = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userData = useSelector((state) => state.userSignIn);
-    const {userInfo} = userData;
+    const {userInfo, loading, error} = userData;
     const[email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -32,6 +32,7 @@ const SignInScreen = () => {
                 <div>
                     <h1>Sign In</h1>
                 </div>
+                {error != "" ? Error(error) : ""}
                 <div>
                     <label htmlFor="email">Email address</label>
                     <input type="email" id="email" placeholder="Enter email" required onChange={(e) => setEmail(e.target.value)}/>
