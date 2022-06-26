@@ -10,20 +10,22 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import RegisterScreen from "./screens/registerScreen/regisetScreen";
 
 function App() {
   return (
     <>
       <Router>
         <Header />
-          <Routes>
-            <Route path="/home" element={<HomeScreen />} />
-            <Route path="/product/:id" element={<ProductScreen />} />
-            <Route path="/cart/:id" element={<CartScreen />} />
-            <Route path="/signin" element={<SignInScreen />} />
-            <Route path="/" element={<Navigate to="/signin" />} />
-          </Routes>
-          <Footer />
+        <Routes>
+          <Route path="/home" element={<HomeScreen />} />
+          <Route path="/product/:id" element={<ProductScreen />} />
+          <Route path="/cart/:id" element={<CartScreen />} />
+          <Route path="/signin" element={<SignInScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
+          <Route path="/" element={<Navigate to="/signin" />} />
+        </Routes>
+        <Footer />
       </Router>
     </>
   );
