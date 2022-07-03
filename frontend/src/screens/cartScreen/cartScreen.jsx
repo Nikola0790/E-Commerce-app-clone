@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -10,9 +10,12 @@ const CartScreen = () => {
   const { id } = useParams();
   const { search } = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const numberOfProduct = search.split("=")[1];
   const product = useSelector((state) => state.cartData);
   const { loading, data } = product;
+  const userData = useSelector(state => state.userSignIn);
+  const {userInfo} = userData;
 
   useEffect(() => {
     dispatch(actionAddCartData(id, numberOfProduct));
@@ -43,6 +46,14 @@ const CartScreen = () => {
       0
     );
   };
+
+  const checkoutHandler = () => {
+    if(userInfo === null) {
+      navigate("/signin")
+    } else {
+      navigate("/shipping")
+    }
+  }
 
   return (
     <div className="container-cart-screen">
@@ -92,7 +103,7 @@ const CartScreen = () => {
                 Total (items {totalItems()}): {totalCost()} $
               </p>
             </div>
-            <button>Proceed to Checkout</button>
+            <button onClick={checkoutHandler}>Proceed to Checkout</button>
           </div>
         </>
       )}
