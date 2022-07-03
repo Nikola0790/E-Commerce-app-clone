@@ -11,6 +11,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import RegisterScreen from "./screens/registerScreen/regisetScreen";
+import ShippingAddressScreen from "./screens/shippingScreen/shippingScreen";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/cart/:id" element={<CartScreen />} />
           <Route path="/signin" element={<SignInScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
+          <Route path="/shipping" element={<ShippingAddressScreen />} />
           <Route path="/" element={<Navigate to="/signin" />} />
         </Routes>
         <Footer />
