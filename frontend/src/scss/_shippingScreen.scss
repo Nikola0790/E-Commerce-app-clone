@@ -1,0 +1,34 @@
+.shippingScreen {
+  margin-top: 50px;
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
+    div:first-child {
+      margin: 0 0 20px 0;
+    }
+    div {
+      margin-top: 25px;
+      label {
+        font-size: 20px;
+      }
+      input {
+        font-size: large;
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 10px;
+      }
+      button {
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        font-size: large;
+        background-color: $starColor;
+        cursor: pointer;
+      }
+    }
+  }
+}
